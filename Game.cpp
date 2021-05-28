@@ -494,6 +494,7 @@ void Game :: inningBoard() {
 }
 
 void Game :: finalScoreCard() {
+	system("pause");
 	system("cls");
 	string heading = "\t Final Board Score \t";
 	int dash = heading.length() + 8 + 7;
