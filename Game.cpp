@@ -380,7 +380,7 @@ void Game :: playingGame() {
 
 				ball = teamB.playerScore[teamB.playingPlayerId(actNo)].getBatBalls();
 				ball++;
-				teamA.playerScore[teamB.playingPlayerId(actNo)].setBatBalls(ball);
+				teamB.playerScore[teamB.playingPlayerId(actNo)].setBatBalls(ball);
 
 				ball = teamA.playerScore[teamA.playingPlayerId(actNo)].getBowlBalls();
 				ball ++;
@@ -389,7 +389,7 @@ void Game :: playingGame() {
 				over = (float)ball / 6;
 				teamA.playerScore[teamA.playingPlayerId(actNo)].setOvers(over);
 
-				ball = teamA.teamScore.getBatBalls();
+				ball = teamB.teamScore.getBatBalls();
 				ball++;
 				over = (float)ball / 6;
 				teamOver = teamB.teamScore.getOvers();
