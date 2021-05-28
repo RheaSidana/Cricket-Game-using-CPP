@@ -3,6 +3,7 @@
 
 #include <iostream>
 using namespace std;
+
 class ScreenHeadings {
 	void contenting(string content, int dash);
 	void blank(int dash);
@@ -16,6 +17,8 @@ public:
 	void screenOutput(string head, string strArr[], int n);
 	void heading(string head, int dash, int equal);
 	void heading(string head, int dash);
+	void finalScore(string head, string strArr[], int n);
+	void contenting(int dash, string content);
 };
 
 enum Activity {

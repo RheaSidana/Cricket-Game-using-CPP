@@ -75,7 +75,7 @@ void ScreenHeadings::screenOutput(string head,int n,string strArr[]) {
 	dashing(dash);
 }
 
-void ScreenHeadings::screenOutput(string head, string strArr[],int n) {
+void  ScreenHeadings::screenOutput(string head, string strArr[],int n) {
 	int maxLen=0;
 	int headLen = head.length();
 	int len;
@@ -99,7 +99,7 @@ void ScreenHeadings::screenOutput(string head, string strArr[],int n) {
 	}
 	else dash = 50;
 
-	equal = (dash - 2 - head.length()) / 2;
+	equal = (dash - 2 - headLen) / 2;
 
 	/*cout << "\n dash : " << dash;
 	cout << "\n Equal : " << equal;
@@ -116,6 +116,51 @@ void ScreenHeadings::screenOutput(string head, string strArr[],int n) {
 		contenting(str[i], dash);
 		if(i<n-1)
 		cout << endl;
+	}
+
+	cout << "\n";
+	dashing(dash);
+}
+
+void ScreenHeadings::finalScore(string head, string strArr[], int n) {
+	int maxLen = 0;
+	int headLen = head.length();
+	int len;
+	string str[5];
+	for (int i = 0; i < n; i++) {
+		//cout << endl << strArr[i];
+		str[i] = to_string(i + 1) + ". " + strArr[i];
+		len = str[i].length();
+		//cout << str[i] << endl << "Length: " << str[i].length()<<endl;
+		if (maxLen < len) {
+			maxLen = len;
+		}
+	}
+	if (headLen > maxLen) {
+		maxLen = headLen;
+	}
+	//cout << "\nMAxlen: " << maxLen << endl;
+	int add = maxLen + 8;
+	int dash = 0, equal = 0;
+	dash = add;
+
+	equal = (dash - 2 - headLen) / 2;
+
+	/*cout << "\n dash : " << dash;
+	cout << "\n Equal : " << equal;
+	cout << "\n add : " << add;
+	cout << "\n Heading : " << head.length() << endl;*/
+
+	heading(head, dash, equal);
+	cout << endl;
+	blank(dash);
+	cout << endl;
+
+	for (int i = 0; i < n; i++) {
+		//str[i] = to_string(i+1)+". "+strArr[i];
+		contenting(dash,str[i]);
+		if (i < n - 1)
+			cout << endl;
 	}
 
 	cout << "\n";
@@ -145,6 +190,44 @@ void ScreenHeadings::heading(string head, int dash, int equal) {
 	equaling(equal);
 	cout << "|\n";
 	dashing(dash);
+}
+
+void ScreenHeadings::contenting(int dash,string content) {
+	int init_pos = 0, fin_pos = 0;
+	int len = content.length();
+	string str;
+	while (init_pos < len) {
+		if (dash < 50) {
+			str = content;
+			init_pos = len;
+		}
+		else {
+			if (fin_pos == 0) {
+				fin_pos = 42;
+			}
+			else if ((len - fin_pos) > 42) {
+				fin_pos = 42;
+				cout << endl;
+			}
+			else {
+				fin_pos = len - fin_pos;
+				cout << endl;
+			}
+			str = content.substr(init_pos, fin_pos);
+			init_pos += fin_pos;
+		}
+		corner();
+		space(3);
+		cout << str;
+		if (dash == 50 && str.length() < 42) {
+			space(42 - str.length());
+		}
+		else if ((dash - str.length()) > 3) {
+			space(dash - str.length() - 8);
+		}
+		space(3);
+		corner();
+	}
 }
 
 void ScreenHeadings::contenting(string content,int dash){

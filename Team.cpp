@@ -211,17 +211,17 @@ void Team :: assignNextPlayer(int actNo) {
 }
 
 void Team :: displayTeamScore() {
-	string heading = " PLAYER \t BATTING \t BOWLING ";
+	string heading = " PLAYER   BATTING       BOWLING ";
 
-	screenDisplay.heading(heading, (heading.length() + 10));
+	//screenDisplay.heading(heading, (heading.length() + 10));
 	string str[5];
 	for (int i = 0; i < playersCount; i++) {
-		str[i] = players[i] + "  " + to_string(playerScore[i].getRuns())+ " ( " + to_string(playerScore[i].getBatBalls()) + " )   "+ to_string(playerScore[i].getOvers()) + " - " + to_string(playerScore[i].getBowlBalls()) + " - " + to_string(playerScore[i].getWickets()) +" ";
-		cout << endl;
-		screenDisplay.heading(str[i], (str[i].length() + 10));
+		str[i] = players[i] + "   " + to_string(playerScore[i].getRuns())+ " ( " + to_string(playerScore[i].getBatBalls()) + " )    "+ to_string(playerScore[i].getOvers()) + " - " + to_string(playerScore[i].getBowlBalls()) + " - " + to_string(playerScore[i].getWickets());
+		//cout << endl;
+		//screenDisplay.heading(str[i], (str[i].length() + 10));
 	}
 	//HEAD ARR N
 
-	screenDisplay.screenOutput(heading, playersCount, str);
+	screenDisplay.finalScore(heading,str,playersCount);
 
 }

@@ -150,6 +150,7 @@ void Game :: performToss() {
 	}
 
 	system("pause");
+	gamePlay(1);
 }
 
 void Game :: gamePlay(int actNo) {
@@ -196,6 +197,7 @@ void Game :: gamePlay(int actNo) {
 	system("pause");
 
 	//playing the game
+	playingGame();
 }
 
 int Game :: getRunsScored() {
@@ -233,8 +235,6 @@ void Game :: displayScoreBoard(int actNo) {
 	cout << endl<<endl;
 }
 
-
-//revise
 void Game :: playingGame() {
 	system("cls");
 	int run,scoredRun;
@@ -451,11 +451,13 @@ void Game :: playingGame() {
 			if (teamA.getActivity(actNo - 1) == "Bat") {
 				if (teamA.teamScore.getRuns() < teamB.teamScore.getRuns()) {
 					//display final board
+					finalScoreCard();
 				}
 			}
 			else {
 				if (teamB.teamScore.getRuns() < teamA.teamScore.getRuns()) {
 					//display final board
+					finalScoreCard();
 				}
 			}
 		}
@@ -491,10 +493,6 @@ void Game :: finalScoreCard() {
 	screenDisplay.heading(heading, dash);
 	cout << endl;
 
-	//delete after test
-	teamA.initTeamScore();
-	teamB.initTeamScore();
-
 	if (teamA.getActivity(1) == "Bat") {
 		if (teamA.teamScore.getRuns() < teamB.teamScore.getRuns()) {
 			cout << "\n Team B won the match !! \n";
@@ -508,7 +506,7 @@ void Game :: finalScoreCard() {
 
 	cout << "\n Team A " << teamA.teamScore.getRuns() << " - " << teamA.teamScore.getWickets() << " (" << teamA.teamScore.getOvers() << ") \n";
 	teamA.displayTeamScore();
-	cout << "\n Team B " << teamA.teamScore.getRuns() << " - " << teamA.teamScore.getWickets() << " (" << teamA.teamScore.getOvers() << ") \n";
+	cout << "\n\n Team B " << teamA.teamScore.getRuns() << " - " << teamA.teamScore.getWickets() << " (" << teamA.teamScore.getOvers() << ") \n";
 	teamB.displayTeamScore();
 
 }
