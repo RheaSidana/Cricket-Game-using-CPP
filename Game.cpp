@@ -196,8 +196,6 @@ void Game :: gamePlay(int actNo) {
 	isInningsOver = false;
 	system("pause");
 
-	//playing the game
-	playingGame();
 }
 
 int Game :: getRunsScored() {
@@ -282,7 +280,9 @@ void Game :: playingGame() {
 				else {
 					isInningsOver = true;
 					cout << "\n Team A no Player left\n";
-					inningBoard();
+					if (actNo == 1)
+						inningBoard();
+					else finalScoreCard();
 					actNo++;
 					if (actNo <= 2)
 						gamePlay(actNo);
@@ -320,7 +320,9 @@ void Game :: playingGame() {
 				else {
 					isInningsOver = true;
 					cout << "\n Team B no Player \n";
-					inningBoard();
+					if (actNo == 1)
+						inningBoard();
+					else finalScoreCard();
 					actNo++;
 					if(actNo <=2)
 					gamePlay(actNo);
@@ -405,7 +407,9 @@ void Game :: playingGame() {
 				if (res == false) {
 					isInningsOver = true;
 					cout << "\n Team A no Player \n";
-					inningBoard();
+					if (actNo == 1)
+						inningBoard();
+					else finalScoreCard();
 					actNo++;
 					if (actNo <= 2)
 						gamePlay(actNo);
@@ -429,7 +433,9 @@ void Game :: playingGame() {
 				if (res == false) {
 					isInningsOver = true;
 					cout << "\n Team B no Player \n";
-					inningBoard();
+					if (actNo == 1)
+						inningBoard();
+					else finalScoreCard();
 					actNo++;
 					if (actNo <= 2)
 						gamePlay(actNo);
@@ -488,6 +494,7 @@ void Game :: inningBoard() {
 }
 
 void Game :: finalScoreCard() {
+	system("cls");
 	string heading = "\t Final Board Score \t";
 	int dash = heading.length() + 8 + 7;
 	screenDisplay.heading(heading, dash);
@@ -497,16 +504,23 @@ void Game :: finalScoreCard() {
 		if (teamA.teamScore.getRuns() < teamB.teamScore.getRuns()) {
 			cout << "\n Team B won the match !! \n";
 		}
+		else {
+			cout << "\n Team A won the match !! \n";
+		}
 	}
 	else {
 		if (teamB.teamScore.getRuns() < teamA.teamScore.getRuns()) {
 			cout << "\n Team A won the match !! \n";
 		}
+		else {
+			cout << "\n Team B won the match !! \n";
+		}
 	}
 
 	cout << "\n Team A " << teamA.teamScore.getRuns() << " - " << teamA.teamScore.getWickets() << " (" << teamA.teamScore.getOvers() << ") \n";
 	teamA.displayTeamScore();
-	cout << "\n\n Team B " << teamA.teamScore.getRuns() << " - " << teamA.teamScore.getWickets() << " (" << teamA.teamScore.getOvers() << ") \n";
+	cout << "\n\n Team B " << teamB.teamScore.getRuns() << " - " << teamB.teamScore.getWickets() << " (" << teamB.teamScore.getOvers() << ") \n";
 	teamB.displayTeamScore();
-
+	cout << endl << endl;
+	exit(0);
 }
