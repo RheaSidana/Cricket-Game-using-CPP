@@ -3,20 +3,8 @@
 #include <string>
 using namespace std;
 
-//class ScreenHeadings {
-//	string heading;
-//	string content;
-//	string strArr[];
-//public: 
-//	void Display(string heading,string content) {
-//		
-//		int len = content.length();
-//		cout << len;
-//	}
-//};
-
-
-
+//display the content on the console in custom layout
+//string content 
 void ScreenHeadings::screenOutput(string head, string content) {
 	int x_len = head.length();
 	int y_len = content.length();
@@ -41,6 +29,9 @@ void ScreenHeadings::screenOutput(string head, string content) {
 		dashing(dash);
 }
 
+//display the content on the console in custom layout
+//without equal sign in the heading 
+//string array content
 void ScreenHeadings::screenOutput(string head,int n,string strArr[]) {
 	int headLen = head.length();
 	int dash = headLen + 8;
@@ -75,6 +66,8 @@ void ScreenHeadings::screenOutput(string head,int n,string strArr[]) {
 	dashing(dash);
 }
 
+//display the content on the console in custom layout
+//string array content
 void  ScreenHeadings::screenOutput(string head, string strArr[],int n) {
 	int maxLen=0;
 	int headLen = head.length();
@@ -122,6 +115,7 @@ void  ScreenHeadings::screenOutput(string head, string strArr[],int n) {
 	dashing(dash);
 }
 
+//display the final score on the console in custom layout
 void ScreenHeadings::finalScore(string head, string strArr[], int n) {
 	int maxLen = 0;
 	int headLen = head.length();
@@ -167,6 +161,7 @@ void ScreenHeadings::finalScore(string head, string strArr[], int n) {
 	dashing(dash);
 }
 
+//display heading without equal sign
 void ScreenHeadings::heading(string head, int dash) {
 	dashing(dash);
 	cout << "\n|";
@@ -177,6 +172,7 @@ void ScreenHeadings::heading(string head, int dash) {
 	dashing(dash);
 }
 
+//display heading with equal sign
 void ScreenHeadings::heading(string head, int dash, int equal) {
 	int len = head.length();
 	int totalEqual = len + 2 * equal + 2;
@@ -192,6 +188,7 @@ void ScreenHeadings::heading(string head, int dash, int equal) {
 	dashing(dash);
 }
 
+//display the content 
 void ScreenHeadings::contenting(int dash,string content) {
 	int init_pos = 0, fin_pos = 0;
 	int len = content.length();
@@ -230,6 +227,7 @@ void ScreenHeadings::contenting(int dash,string content) {
 	}
 }
 
+/*
 void ScreenHeadings::contenting(string content,int dash){
 	int init_pos = 0,fin_pos=0;
 	int len = content.length();
@@ -267,7 +265,9 @@ void ScreenHeadings::contenting(string content,int dash){
 		corner();
 	}
 }
+*/
 
+//display blank row
 void ScreenHeadings::blank(int dash) {
 	for (int i = 0; i < dash; i++) {
 		if (i == 0 || i == (dash - 1))
@@ -276,22 +276,26 @@ void ScreenHeadings::blank(int dash) {
 	}
 }
 
+//display corner 
 void ScreenHeadings::corner() {
 	cout << "|";
 }
 
+//display space 
 void ScreenHeadings::space(int n) {
 	for (int i = 0; i < n; i++) {
 		cout << " ";
 	}
 }
 
+//display the dash, dash times
 void ScreenHeadings::dashing(int dash) {
 	for (int i = 0; i < dash; i++) {
 		cout << "-";
 	}
 }
 
+//display the equal sign 
 void ScreenHeadings::equaling(int equal) {
 	for (int i = 0; i < equal; i++) {
 		cout << "=";
