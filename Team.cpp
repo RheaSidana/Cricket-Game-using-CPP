@@ -3,6 +3,7 @@
 #include <string>
 using namespace std;
 
+//assign players to the team
 void Team :: assignPlayers(int n, string members[]) {
 	playersCount = n;
 	for (int i = 0; i < n; i++) {
@@ -12,10 +13,12 @@ void Team :: assignPlayers(int n, string members[]) {
 	}
 }
 
+//display the players on the screen
 void Team::displayTeamMembers(string teamName) {
 	screenDisplay.screenOutput(teamName, players, playersCount);
 }
 
+//return the activty number chosen and assign the first activity to the team
 int Team :: selectActivity() {
 	int ch;
 	while (true) {
@@ -35,6 +38,7 @@ int Team :: selectActivity() {
 	return ch;
 }
 
+//return the activity as string 
 string Team ::  getActivity(int no) {
 	string retStr;
 	if (no == 1) {
@@ -56,10 +60,12 @@ string Team ::  getActivity(int no) {
 	return retStr;
 }
 
+//display to select the first player display
 void Team :: selectFirstPlayerDisplay(string heading) {
 	screenDisplay.screenOutput(heading, playersCount, players);
 }
 
+//set the activity 1 or 2 on the basis of the activity number 
 void Team::setActivity(int actNo,int ch) {
 	switch (ch) {
 	case 1: switch (actNo) {
@@ -79,6 +85,7 @@ void Team::setActivity(int actNo,int ch) {
 	}
 }
 
+//set the new player as playing
 void Team ::  setPlayingPlayer(int n,int actNo) {
 	while (true) {
 		if (actNo == 1 && hasPlayed1[n - 1] != -1 && hasPlayed1[n - 1] != 1) {
@@ -96,6 +103,7 @@ void Team ::  setPlayingPlayer(int n,int actNo) {
 	}
 }
 
+//return the name of the playing player 
 string Team :: getPlayingPlayer(int actNo) {
 	string playerName;
 	for (int i = 0; i < playersCount; i++) {
@@ -111,6 +119,7 @@ string Team :: getPlayingPlayer(int actNo) {
 	return playerName;
 }
 
+//display the players available to play
 void Team::playersToPlay(int actNo) {
 	string str[5];
 	for (int i = 0; i < playersCount; i++) {
@@ -130,6 +139,7 @@ void Team::playersToPlay(int actNo) {
 	screenDisplay.screenOutput(heading, str, 5);
 }
 
+//set the currently player player as played
 void Team::nextPlayer(int actNo) {
 	int id = playingPlayerId(actNo);
 	if (actNo == 1 ) {
@@ -140,6 +150,7 @@ void Team::nextPlayer(int actNo) {
 	}
 }
 
+//initialize the score of team and players resplectively
 void Team:: initTeamScore() {
 	teamScore.init();
 	for (int i = 0; i < playersCount; i++) {
@@ -147,6 +158,7 @@ void Team:: initTeamScore() {
 	}
 }
 
+//return the array element id of the playing player
 int Team::playingPlayerId(int actNo) {
 	int id=-1;
 	for (int i = 0; i < playersCount; i++) {
@@ -162,6 +174,7 @@ int Team::playingPlayerId(int actNo) {
 	return id;
 }
 
+//return the playing player's score according to the activity
 string Team :: playingPlayersScore(int id,int actNo) {
 	string str;
 	//int id = playingPlayerId(actNo);
@@ -185,6 +198,7 @@ string Team :: playingPlayersScore(int id,int actNo) {
 	return str;
 }
 
+//return the availability of players to play 
 bool Team::isPlayerAvailable(int actNo) {
 	bool res=false;
 	for (int i = 0; i < playersCount; i++) {
@@ -200,6 +214,7 @@ bool Team::isPlayerAvailable(int actNo) {
 	return res;
 }
 
+//assigning next player to play
 void Team :: assignNextPlayer(int actNo) {
 	playersToPlay(actNo);
 
@@ -210,6 +225,7 @@ void Team :: assignNextPlayer(int actNo) {
 	setPlayingPlayer(id, actNo);
 }
 
+//display team score for final scroe board
 void Team :: displayTeamScore() {
 	string heading = " PLAYER   BATTING       BOWLING ";
 
@@ -225,3 +241,6 @@ void Team :: displayTeamScore() {
 	screenDisplay.finalScore(heading,str,playersCount);
 
 }
+
+
+
